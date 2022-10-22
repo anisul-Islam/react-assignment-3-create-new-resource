@@ -23,7 +23,7 @@ const NewTodo = (props) => {
   };
 
   return (
-    <div className="container">
+    <div>
       <h1 className="title">Collect Data from a Form</h1>
       <div className="card">
         <form action="" onSubmit={handleSubmit}>
