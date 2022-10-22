@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const NewTodo = (props) => {
-  const [todo, setTodo] = useState();
+const NewTodo = ({handleAddTodo}) => {
+  const [todo, setTodo] = useState({
+    title: '',
+    desc: ''
+  });
 
   // for handling todo state changes
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    let key=e.target.name,
+        value=e.target.value;
+    setTodo({...todo,...{[key]:value}})
+  };
 
   // submit the form and send newTodo in App.js
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
-      id: uuidv4()
+      id: uuidv4(),
+      ...todo
     };
+    handleAddTodo(newTodo);
 
     // for reset todo state
     setTodo({
