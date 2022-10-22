@@ -8,7 +8,7 @@
 - Controlled component
 - state lifting
 
-### [Click here to see the project demo]()
+### [Click here to see the project demo](https://create-new-todo.netlify.app/)
 
 ### Assignment steps:
 
