@@ -5,7 +5,7 @@ const Todo = (props) => {
   const { title, desc } = props.todo;
   return (
     <article className="todo">
-      <h3>{title}</h3>
+      <h3 className="todo__title">{title}</h3>
       <p>{desc}</p>
     </article>
   );
