@@ -2,18 +2,31 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-const NewTodo = (props) => {
+const NewTodo = ({ handleAddTodo }) => {
   const [todo, setTodo] = useState();
 
   // for handling todo state changes
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    if (e.target.name === 'title') {
+      setTodo({
+        ...todo,
+        id: uuidv4(),
+        title: e.target.value
+      });
+    }
+    if (e.target.name === 'desc') {
+      setTodo({
+        id: uuidv4(),
+        ...todo,
+        desc: e.target.value
+      });
+    }
+  };
 
   // submit the form and send newTodo in App.js
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTodo = {
-      id: uuidv4()
-    };
+    handleAddTodo(todo);
 
     // for reset todo state
     setTodo({
@@ -33,7 +46,7 @@ const NewTodo = (props) => {
               type="text"
               name="title"
               id="title"
-              value={todo.title}
+              value={todo?.title}
               onChange={handleChange}
               required
             />
@@ -44,7 +57,7 @@ const NewTodo = (props) => {
             <textarea
               name="desc"
               id="desc"
-              value={todo.desc}
+              value={todo?.desc}
               onChange={handleChange}
               required></textarea>
           </div>
@@ -62,5 +75,7 @@ const NewTodo = (props) => {
 NewTodo.propTypes = {
   onHandleAddTodo: PropTypes.func
 };
-
+NewTodo.propTypes = {
+  handleAddTodo: PropTypes.func
+};
 export default NewTodo;
