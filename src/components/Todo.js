@@ -1,21 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 
 const Todo = (props) => {
-  const { title, desc } = props.todo;
+   
+    
   return (
-    <article className="todo">
-      <h3 className="todo__title">{title}</h3>
-      <p>{desc}</p>
+    <article>
+        <h3>{props.todo.name}</h3>
+        <h4>{props.todo.job}</h4>
+        <p>{props.todo.id}</p>
     </article>
-  );
-};
+        
 
-Todo.propTypes = {
-  todo: PropTypes.shape({
-    title: PropTypes.string,
-    desc: PropTypes.string
-  })
-};
+  )
+}
 
-export default Todo;
+export default Todo
