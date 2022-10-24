@@ -21,14 +21,18 @@ const App = () => {
   const [todos, setTodos] = useState(todosData);
 
   // get the newTodo from NewTodo.js here inside this function
-  const handleAddTodo = () => {};
+  const handleAddTodo = (newTodo) => {
+    // This is for deep cloning the state beacuse of avoiding re-rendering issues
+    const todosClone = JSON.parse(JSON.stringify(todos));
+    todosClone.push(newTodo);
+    setTodos(todosClone);
+  };
 
   return (
     <div>
-      <NewTodo />
-      <Todos />
+      <NewTodo handleAddTodo={handleAddTodo} />
+      <Todos todos={todos} />
     </div>
   );
 };
-
 export default App;
