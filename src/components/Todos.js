@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Todo from './Todo';
+import Todo from "./Todo";
 
 const Todos = (props) => {
   const { todos } = props;
@@ -15,7 +15,7 @@ const Todos = (props) => {
 };
 
 Todos.propTypes = {
-  todos: PropTypes.array
+  todos: PropTypes.array,
 };
 
 export default Todos;

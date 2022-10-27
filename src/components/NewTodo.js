@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 
 const NewTodo = (props) => {
-  const [todo, setTodo] = useState();
+  const [todo, setTodo] = useState({ title: "", desc: "" });
 
   // for handling todo state changes
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const name = e.target.name;
+    setTodo({ ...todo, [name]: e.target.value });
+  };
 
   // submit the form and send newTodo in App.js
   const handleSubmit = (e) => {
+    console.log(todo);
     e.preventDefault();
     const newTodo = {
-      id: uuidv4()
+      id: uuidv4(),
+      title: todo.title,
+      desc: todo.desc,
     };
+    props.onHandleAddTodo(newTodo);
 
     // for reset todo state
     setTodo({
-      title: '',
-      desc: ''
+      title: "",
+      desc: "",
     });
   };
 
@@ -46,7 +53,8 @@ const NewTodo = (props) => {
               id="desc"
               value={todo.desc}
               onChange={handleChange}
-              required></textarea>
+              required
+            ></textarea>
           </div>
           <div className="field-group">
             <button className="btn" type="submit">
@@ -60,7 +68,7 @@ const NewTodo = (props) => {
 };
 
 NewTodo.propTypes = {
-  onHandleAddTodo: PropTypes.func
+  onHandleAddTodo: PropTypes.func,
 };
 
 export default NewTodo;
