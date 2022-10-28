@@ -2,18 +2,30 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-const NewTodo = (props) => {
-  const [todo, setTodo] = useState();
+const NewTodo = ({ handleAddTodo }) => {
+  const [todo, setTodo] = useState({
+    id: uuidv4,
+    title: "",
+    desc: ""
+  });
 
   // for handling todo state changes
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    setTodo((current) => {
+      return { ...current, [e.target.name]: e.target.value }
+    })
+  };
 
   // submit the form and send newTodo in App.js
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
-      id: uuidv4()
+      id: uuidv4(),
+      title: todo.title,
+      desc: todo.desc
     };
+
+    handleAddTodo(newTodo)
 
     // for reset todo state
     setTodo({
@@ -33,7 +45,7 @@ const NewTodo = (props) => {
               type="text"
               name="title"
               id="title"
-              value={todo.title}
+              value={todo?.title}
               onChange={handleChange}
               required
             />
@@ -44,7 +56,7 @@ const NewTodo = (props) => {
             <textarea
               name="desc"
               id="desc"
-              value={todo.desc}
+              value={todo?.desc}
               onChange={handleChange}
               required></textarea>
           </div>
