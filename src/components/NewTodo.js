@@ -2,57 +2,51 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
-const NewTodo = (props) => {
-  const [todo, setTodo] = useState();
+// eslint-disable-next-line react/prop-types
+const NewTodo = ({ addNewTodo }) => {
+  const [todo, setTodo] = useState({ title: '', desc: '', id: uuidv4() });
 
-  // for handling todo state changes
-  const handleChange = (e) => {};
-
-  // submit the form and send newTodo in App.js
-  const handleSubmit = (e) => {
+  const titleChangeHandler = (e) => {
+    setTodo({ ...todo, title: e.target.value });
+  };
+  const descChangeHandler = (e) => {
+    setTodo({ ...todo, desc: e.target.value });
+  };
+  const formHandler = (e) => {
     e.preventDefault();
     const newTodo = {
-      id: uuidv4()
+      title: todo.title,
+      desc: todo.desc
     };
-
-    // for reset todo state
-    setTodo({
-      title: '',
-      desc: ''
-    });
+    addNewTodo(newTodo);
+    setTodo({ title: '', desc: '' });
   };
-
   return (
     <div>
       <h1 className="title">Collect Data from a Form</h1>
       <div className="card">
-        <form action="" onSubmit={handleSubmit}>
+        <form onSubmit={formHandler}>
           <div className="field-group">
-            <label htmlFor="title">Title: </label>
+            <label className="title">Title:</label>
             <input
+              onChange={titleChangeHandler}
               type="text"
-              name="title"
-              id="title"
               value={todo.title}
-              onChange={handleChange}
+              name={todo.title}
               required
             />
           </div>
-
           <div className="field-group">
-            <label htmlFor="desc">Description: </label>
+            <label>Description:</label>
             <textarea
-              name="desc"
-              id="desc"
+              onChange={descChangeHandler}
               value={todo.desc}
-              onChange={handleChange}
-              required></textarea>
+              type="text"
+              name={todo.desc}
+              required
+            />
           </div>
-          <div className="field-group">
-            <button className="btn" type="submit">
-              Send
-            </button>
-          </div>
+          <input className="btn" type="submit" value="Send" />
         </form>
       </div>
     </div>

@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Todo = (props) => {
-  const { title, desc } = props.todo;
+const Todo = ({ todo }) => {
   return (
-    <article className="todo">
-      <h3 className="todo__title">{title}</h3>
-      <p>{desc}</p>
-    </article>
+    <div className="todo">
+      <h3 className="todo__title">{todo.title}</h3>
+      <p>{todo.desc}</p>
+    </div>
   );
 };
 
