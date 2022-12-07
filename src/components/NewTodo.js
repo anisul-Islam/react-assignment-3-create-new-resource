@@ -30,10 +30,10 @@ const NewTodo = (props) => {
   };
 
   return (
-    <div>
+    <div >
       <h1 className="title">Collect Data from a Form</h1>
-      <div className="card">
-        <form action="" onSubmit={handleSubmit}>
+      <div className="card" style={{margin:"0 auto"}}>
+        <form  action="" onSubmit={handleSubmit}>
           <div className="field-group">
             <label htmlFor="title">Title: </label>
             <input
