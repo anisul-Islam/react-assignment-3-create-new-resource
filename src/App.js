@@ -16,17 +16,23 @@ const todosData = [
     desc: 'react assignments might be boring but I can do it'
   }
 ];
+ 
 
 const App = () => {
   const [todos, setTodos] = useState(todosData);
 
   // get the newTodo from NewTodo.js here inside this function
-  const handleAddTodo = () => {};
+  const handleAddTodo = (items) => {
+    console.log(items)
+    setTodos((prevTodos)=>{
+      return [...prevTodos,items]
+    })
+  };
 
   return (
     <div>
-      <NewTodo />
-      <Todos />
+      <NewTodo  onNewTodo={handleAddTodo}/>
+      <Todos todos={todos}/>
     </div>
   );
 };

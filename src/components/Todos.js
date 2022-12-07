@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Todo from './Todo';
 
 const Todos = (props) => {
-  const { todos } = props;
+  const todos = props.todos
   return (
     <section className="todos">
       {todos.map((todo) => (
