@@ -19,19 +19,19 @@ const todosData = [
  
 
 const App = () => {
-  const [todos, setTodos] = useState([todosData]);
+  const [todos, setTodos] = useState(todosData);
 
   // get the newTodo from NewTodo.js here inside this function
-  // const handleAddTodo = (items) => {
-  //   console.log(items)
-  //   setTodos((prevTodos)=>{
-  //     return [...prevTodos,{items}]
-  //   })
-  // };
+  const handleAddTodo = (items) => {
+    console.log(items)
+    setTodos((prevTodos)=>{
+      return [...prevTodos,items]
+    })
+  };
 
   return (
     <div>
-      <NewTodo  />
+      <NewTodo  onNewTodo={handleAddTodo}/>
       <Todos todos={todos}/>
     </div>
   );
