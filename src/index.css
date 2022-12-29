@@ -59,6 +59,7 @@ textarea {
   border-radius: 0.6rem;
   width: 25rem;
   max-width: 100%;
+  margin: auto;
 }
 
 form {
@@ -108,4 +109,3 @@ form {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
-
