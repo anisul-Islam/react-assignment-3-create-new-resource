@@ -3,17 +3,30 @@ import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 const NewTodo = (props) => {
-  const [todo, setTodo] = useState();
+  const [todo, setTodo] = useState({
+    title: '',
+    desc: ''
+  });
+
+  //const { title, desc } = todo;
 
   // for handling todo state changes
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const name = e.target.name;
+    setTodo((oldData) => {
+      return { ...oldData, [name]: e.target.value };
+    });
+  };
 
   // submit the form and send newTodo in App.js
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
-      id: uuidv4()
+      id: uuidv4(),
+      todo
     };
+
+    props.onHandleAddTodo(newTodo);
 
     // for reset todo state
     setTodo({
