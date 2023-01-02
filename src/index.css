@@ -59,6 +59,7 @@ textarea {
   border-radius: 0.6rem;
   width: 25rem;
   max-width: 100%;
+  margin: auto;
 }
 
 form {
@@ -93,6 +94,7 @@ form {
   color: yellow;
   font-family: fantasy;
 }
+
 @media screen and (max-width: 992px) {
   .todos {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -108,4 +110,3 @@ form {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
-
