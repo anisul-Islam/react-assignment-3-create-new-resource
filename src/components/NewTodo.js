@@ -1,19 +1,32 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 const NewTodo = (props) => {
-  const [todo, setTodo] = useState();
+  const [todo, setTodo] = useState({title: '', desc: ''});
 
   // for handling todo state changes
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const name = e.target.name;
+    setTodo((oldTodo)=>{
+      return {
+        ...oldTodo, [name]:e.target.value
+      }
+    })
+  };
 
   // submit the form and send newTodo in App.js
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
-      id: uuidv4()
+      id: uuidv4(),
+      title: todo.title,
+      desc: todo.desc
     };
+
+    // eslint-disable-next-line react/prop-types
+    props.onAddTodo(newTodo)
 
     // for reset todo state
     setTodo({
@@ -23,7 +36,7 @@ const NewTodo = (props) => {
   };
 
   return (
-    <div>
+    <div >
       <h1 className="title">Collect Data from a Form</h1>
       <div className="card">
         <form action="" onSubmit={handleSubmit}>
