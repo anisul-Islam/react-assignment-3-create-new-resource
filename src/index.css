@@ -38,6 +38,18 @@ textarea {
   background-color: orange;
   color: black;
 }
+.crossButton {
+   width: 30px;
+   height: 30px;
+   margin: 0 auto;
+   font-size: 25px;
+   background-color: white;
+   border-radius: 7px;
+}
+.crossButton:hover {
+   cursor: pointer;
+   background-color: red;
+}
 
 .container {
   min-height: 100vh;
@@ -59,6 +71,7 @@ textarea {
   border-radius: 0.6rem;
   width: 25rem;
   max-width: 100%;
+  margin: 0 auto
 }
 
 form {
