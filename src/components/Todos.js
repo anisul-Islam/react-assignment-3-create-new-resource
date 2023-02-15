@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -8,7 +11,7 @@ const Todos = (props) => {
   return (
     <section className="todos">
       {todos.map((todo) => (
-        <Todo key={todo.id} todo={todo} />
+        <Todo key={todo.id} todo={todo} id={todo.id} onRemoveTodo={props.onRemoveTodo} />
       ))}
     </section>
   );
