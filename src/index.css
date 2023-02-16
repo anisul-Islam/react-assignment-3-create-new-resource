@@ -59,6 +59,7 @@ textarea {
   border-radius: 0.6rem;
   width: 25rem;
   max-width: 100%;
+  margin: 0 auto;
 }
 
 form {

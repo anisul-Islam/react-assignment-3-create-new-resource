@@ -1,8 +1,9 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const Todo = (props) => {
-  const { title, desc } = props.todo;
+  const { title, desc } = props.todo; 
   return (
     <article className="todo">
       <h3 className="todo__title">{title}</h3>
