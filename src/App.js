@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable prettier/prettier */
+import React, {useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import NewTodo from './components/NewTodo';
@@ -20,13 +21,17 @@ const todosData = [
 const App = () => {
   const [todos, setTodos] = useState(todosData);
 
-  // get the newTodo from NewTodo.js here inside this function
-  const handleAddTodo = () => {};
+   // get the newTodo from NewTodo.js here inside this function
+   const handleAddTodo = (newTodo) => {
+    setTodos((prevsTodos)=>{
+      return[...prevsTodos, newTodo]
+    })
+   };
 
   return (
     <div>
-      <NewTodo />
-      <Todos />
+      <NewTodo onAddTodo={handleAddTodo} />
+      <Todos todos={todos} />
     </div>
   );
 };
