@@ -1,6 +1,6 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
 import NewTodo from './components/NewTodo';
 import Todos from './components/Todos';
 
@@ -21,12 +21,19 @@ const App = () => {
   const [todos, setTodos] = useState(todosData);
 
   // get the newTodo from NewTodo.js here inside this function
-  const handleAddTodo = () => {};
+  const handleAddTodo = (newTodo,todo) => {
+
+    setTodos((oldTodos)=>{
+      return[...oldTodos,{...newTodo,...todo}]
+    })
+    console.log({...newTodo,...todo});
+
+  };
 
   return (
-    <div>
-      <NewTodo />
-      <Todos />
+    <div className='container'>
+      <NewTodo onHandleAddTodo={handleAddTodo}/>
+      <Todos todos={todos} />
     </div>
   );
 };

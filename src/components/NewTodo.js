@@ -1,12 +1,16 @@
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 const NewTodo = (props) => {
-  const [todo, setTodo] = useState();
-
+  const [todo, setTodo] = useState({title: "", desc: ""});
+  const {title, desc} = todo;
   // for handling todo state changes
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+setTodo((oldTodo) => {
+  return{...oldTodo,[e.target.name]:e.target.value}});
+  };
 
   // submit the form and send newTodo in App.js
   const handleSubmit = (e) => {
@@ -14,6 +18,8 @@ const NewTodo = (props) => {
     const newTodo = {
       id: uuidv4()
     };
+
+    props.onHandleAddTodo(newTodo,todo);
 
     // for reset todo state
     setTodo({
@@ -25,15 +31,15 @@ const NewTodo = (props) => {
   return (
     <div>
       <h1 className="title">Collect Data from a Form</h1>
-      <div className="card">
-        <form action="" onSubmit={handleSubmit}>
+      <div className="card ">
+        <form onSubmit={handleSubmit}>
           <div className="field-group">
             <label htmlFor="title">Title: </label>
             <input
               type="text"
               name="title"
               id="title"
-              value={todo.title}
+              value={title}
               onChange={handleChange}
               required
             />
@@ -44,7 +50,7 @@ const NewTodo = (props) => {
             <textarea
               name="desc"
               id="desc"
-              value={todo.desc}
+              value={desc}
               onChange={handleChange}
               required></textarea>
           </div>
