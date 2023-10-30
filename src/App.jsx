@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+
 import { v4 as uuidv4 } from 'uuid';
 
 import NewTodo from './components/NewTodo';
 import Todos from './components/Todos';
+import { useState } from 'react';
 
 const todosData = [
   {
@@ -21,12 +22,13 @@ const App = () => {
   const [todos, setTodos] = useState(todosData);
 
   // get the newTodo from NewTodo.js here inside this function
-  const handleAddTodo = () => {};
-
+  const handleAddTodo = (newTodo) => {
+    setTodos(prevTodos=>([...prevTodos,newTodo]))
+  };
   return (
     <div>
-      <NewTodo />
-      <Todos />
+      <NewTodo handleAddTodo={handleAddTodo}/>
+      <Todos todos={todos} />
     </div>
   );
 };
