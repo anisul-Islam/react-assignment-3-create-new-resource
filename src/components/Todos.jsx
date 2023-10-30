@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Todo from './Todo';
 
@@ -14,8 +13,5 @@ const Todos = (props) => {
   );
 };
 
-Todos.propTypes = {
-  todos: PropTypes.array
-};
 
-export default Todos;
+export default Todos
